@@ -27,7 +27,7 @@ pipeline {
                 branch 'master' 
             }
             steps {
-                echo 'Deploying... to production'
+                sh 'echo "Deploying... to production"'
             }
         }
     }
