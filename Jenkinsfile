@@ -12,24 +12,22 @@ pipeline {
     //     }
     // }
     stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+            }
+        }
         stage('Deliver for master branch') {
             when {
                 branch 'master' 
             }
-            stage('Build') {
-                steps {
-                    echo 'Building...'
-                }
-            }
-            stage('Test') {
-                steps {
-                    echo 'Testing...'
-                }
-            }
-            stage('Deploy') {
-                steps {
-                    echo 'Deploying...'
-                }
+            steps {
+                echo 'Deploying... to production'
             }
         }
     }
