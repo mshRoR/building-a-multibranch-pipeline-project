@@ -93,8 +93,8 @@ pipeline {
             when {
                 // expression { BRANCH ==~ /(master|development)/ }
                 anyOf {
-                    expression { BRANCH == 'master' }
-                    expression { BRANCH == 'development' }
+                    expression { GIT_BRANCH == 'origin/master' }
+                    expression { GIT_BRANCH == 'origin/development' }
                     // environment name: 'DEPLOY_TO', value: 'master'
                     // environment name: 'DEPLOY_TO', value: 'development'
                 }
