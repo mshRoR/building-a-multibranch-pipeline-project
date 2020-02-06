@@ -84,14 +84,17 @@ pipeline {
                         echo "TASK_DEFINTION_NAME: $TASK_DEFINTION_NAME"
                         echo "========MASTER BRANCH=========="
                         echo "MY BRANCH: $BRANCH"
+                        echo "MY BRANCH env: ${env.BRANCH}"
                         echo "GIT_BRANCH: $GIT_BRANCH"
                     """
+                    echo env.BRANCH
+                    echo ${env.BRANCH}
                 }
             }
         }
         stage('Docker image building and pushing') {
             when {
-                expression { $BRANCH ==~ /(master|development)/ }
+                expression { env.BRANCH ==~ /(master|development)/ }
                 // anyOf {
                 //     expression { GIT_BRANCH == 'origin/master' }
                 //     expression { GIT_BRANCH == 'origin/development' }
