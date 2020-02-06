@@ -90,6 +90,9 @@ pipeline {
             }
         }
         stage('Docker image building and pushing') {
+            when {
+                expression { BRANCH ==~ /(master|development)/ }
+            }
             steps {
                 script {
                     sh 'printenv'
