@@ -91,13 +91,11 @@ pipeline {
         }
         stage('Docker image building and pushing') {
             when {
-                // expression { BRANCH ==~ /(master|development)/ }
-                anyOf {
-                    expression { GIT_BRANCH == 'origin/master' }
-                    expression { GIT_BRANCH == 'origin/development' }
-                    // environment name: 'DEPLOY_TO', value: 'master'
-                    // environment name: 'DEPLOY_TO', value: 'development'
-                }
+                expression { $BRANCH ==~ /(master|development)/ }
+                // anyOf {
+                //     expression { GIT_BRANCH == 'origin/master' }
+                //     expression { GIT_BRANCH == 'origin/development' }
+                // }
             }
             steps {
                 script {
